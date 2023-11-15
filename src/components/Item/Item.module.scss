@@ -1,3 +1,5 @@
+@import '../../assets/styles/_config.scss';
+
 .item_data {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -5,8 +7,8 @@
   }
   
   .item {
-    color: #696963;
-    border-bottom: 1px solid #C4C4C0;
+    color: $color-neutral-dark;
+    border-bottom: 1px solid $color-neutral-light;
   }
   
   .item_totalPrice, .item_charge, .item_price, .item_chargeTime {
@@ -14,7 +16,7 @@
   } 
   
   .item_operator, .item_totalPrice {
-    color: #000000;
+    color: $color-neutral-darkest;
     font-weight: bold;
   }
   
