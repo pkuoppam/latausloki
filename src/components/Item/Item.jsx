@@ -1,5 +1,5 @@
 import styles from './Item.module.scss'
-
+import { CiEdit } from 'react-icons/ci'
 
 function Item() {
 
@@ -15,6 +15,9 @@ function Item() {
             <div className={styles.item_filling}></div> 
             <div className={styles.item_chargeTime}>22 min 39 sek</div>
           </div>
+        <div className={styles.item_edit}>
+          <CiEdit />
+        </div>  
         </div>  // styles.item_filling on täytteenä, kun en saanut muuten aikaa asemoitumaan oikeaan reunaan
       )
     

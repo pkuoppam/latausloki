@@ -3,12 +3,14 @@
 .item_data {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    padding: 1rem;
+    padding: 0.6rem;
+    flex: 1;
   }
   
   .item {
     color: $color-neutral-dark;
     border-bottom: 1px solid $color-neutral-lightest;
+    display: flex;
   }
   
   .item_totalPrice, .item_charge, .item_price, .item_chargeTime {
@@ -19,4 +21,20 @@
     color: $color-neutral-lighter;
     font-weight: bold;
   }
+  
+  .item_edit {
+    max-width: 1.3rem;
+    min-width: 1.3rem;
+    background-color: $color-neutral-lightest;
+    color: $color-neutral-dark;
+    font-size: 1.75rem;
+    display: none;
+    justify-content: center;
+    align-items: center; 
+  }
+
+  .item:hover .item_edit {
+    display: flex;
+  }
+  
   
