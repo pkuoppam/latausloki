@@ -11,3 +11,8 @@
     align-items: center;
   }
   
+  // asetetaan ikonit pystysyynnassa keskelle palkkia
+  .menu > div {
+    display: flex;
+    align-items: center;
+  }
