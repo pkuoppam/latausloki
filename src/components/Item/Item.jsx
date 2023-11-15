@@ -12,6 +12,16 @@ function Item({data, ...props}) {
   // Muotoillaan rahan arvo olion avulla, jossa 12.6 muuttuu suomalaiseen muotoon 12,60 €
   const totalPrice = numberFormat.format(data.totalPrice)
 
+  let kwhPrice;
+  if (data.charge && data.totalPrice) {
+    const chargedKwh = data.charge;
+    const paymentPrice = data.totalPrice;
+
+    // Tarkistetaan, että jaettava ei ole nolla
+    if (chargedKwh !== 0) {
+      kwhPrice = paymentPrice / chargedKwh;
+    }
+  }
     return (
         <div className={styles.item}>
           <div className={styles.item_data}>
@@ -20,7 +30,7 @@ function Item({data, ...props}) {
             <div className={styles.item_date}>{paymentDate}</div>
             <div className={styles.item_charge}>{data.charge} kWh</div>
             <div className={styles.item_location}>{data.location}</div>
-            <div className={styles.item_price}>{data.price} €/kWh</div>
+            <div className={styles.item_price}>{kwhPrice ? numberFormat.format(kwhPrice) + " /kWh" : ""}</div>
             <div className={styles.item_filling}></div> 
             <div className={styles.item_chargeTime}>{data.chargeTime}</div>
           </div>
