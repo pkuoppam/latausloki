@@ -7,12 +7,16 @@ function Item({data, ...props}) {
   // Luodaan date-olio. Muuttaa ISO-muotoisen päivämäärän suomalaiseen muotoon
   // locale:sta saaman arvon muodossa
   const paymentDate = new Date(data.paymentDate).toLocaleDateString(locale)
+  // locale vakiosta suomi, lisätietoina muotoilu valuuttana ja valuutta EUR
+  const numberFormat = new Intl.NumberFormat(locale, { style: 'currency', currency: 'EUR' })
+  // Muotoillaan rahan arvo olion avulla, jossa 12.6 muuttuu suomalaiseen muotoon 12,60 €
+  const totalPrice = numberFormat.format(data.totalPrice)
 
     return (
         <div className={styles.item}>
           <div className={styles.item_data}>
             <div className={styles.item_operator}>{data.operator}</div>
-            <div className={styles.item_totalPrice}>{data.totalPrice} €</div>
+            <div className={styles.item_totalPrice}>{totalPrice}</div>
             <div className={styles.item_date}>{paymentDate}</div>
             <div className={styles.item_charge}>{data.charge} kWh</div>
             <div className={styles.item_location}>{data.location}</div>
