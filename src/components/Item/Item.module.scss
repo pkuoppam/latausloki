@@ -1,0 +1,20 @@
+.item_data {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 1rem;
+  }
+  
+  .item {
+    color: #696963;
+    border-bottom: 1px solid #C4C4C0;
+  }
+  
+  .item_totalPrice, .item_charge, .item_price, .item_chargeTime {
+    text-align: right;
+  } 
+  
+  .item_operator, .item_totalPrice {
+    color: #000000;
+    font-weight: bold;
+  }
+  
