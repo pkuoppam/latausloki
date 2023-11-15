@@ -1,0 +1,13 @@
+@import '../../assets/styles/_config.scss'; 
+
+.menu {
+    background-color: $color-neutral-dark;
+    color: $color-neutral-darkest;
+    max-height: 4rem;
+    min-height: 4rem;
+    font-size: 2rem;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+  
