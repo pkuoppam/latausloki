@@ -1,7 +1,7 @@
 import styles from './buttons.module.scss'
 import clsx from 'clsx'
 
-function Button({className, primary, ...props}) {
+function Button({className, primary, secondary, ...props}) {
   return (
     <button type='button' 
     className={clsx(
