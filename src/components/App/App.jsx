@@ -5,6 +5,7 @@ import Header from '../Header'
 import Item from '../Item'
 import Items from '../Items'
 import Menu from '../Menu'
+import Stats from '../Stats'
 import { FloatingButton } from '../../shared/buttons'
 
 function App() {
@@ -15,7 +16,7 @@ function App() {
       <div className={styles.app}>
         <Header />
         <Content>
-          <Items />
+          <Stats />
           <FloatingButton secondary>+</FloatingButton>
         </Content>
         <Menu />
