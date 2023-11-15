@@ -12,7 +12,9 @@ function AppRouter(props) {
       element: <Root />,
       errorElement: <ErrorPage />,
       children: [
-        { path: "", element: <Items /> },
+        { path: "",
+         element: <Items />,
+         loader: () => { return props.data } },
         { path: "stats", element: <Stats /> },
         { path: "settings", element: <Settings /> }
       ]

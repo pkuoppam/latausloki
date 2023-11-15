@@ -1,19 +1,19 @@
 import styles from './Item.module.scss'
 import { CiEdit } from 'react-icons/ci'
 
-function Item() {
+function Item({data, ...props}) {
 
     return (
         <div className={styles.item}>
           <div className={styles.item_data}>
-            <div className={styles.item_operator}>ABC-Lataus</div>
-            <div className={styles.item_totalPrice}>12.68 €</div>
-            <div className={styles.item_date}>20.3.2023</div>
-            <div className={styles.item_charge}>36.223</div>
-            <div className={styles.item_location}>Prisma Savonlinna</div>
-            <div className={styles.item_price}>0.35 €/kWh</div>
+            <div className={styles.item_operator}>{data.operator}</div>
+            <div className={styles.item_totalPrice}>{data.totalPrice} €</div>
+            <div className={styles.item_date}>{data.paymentDate}</div>
+            <div className={styles.item_charge}>{data.charge} kWh</div>
+            <div className={styles.item_location}>{data.location}</div>
+            <div className={styles.item_price}>{data.price} €/kWh</div>
             <div className={styles.item_filling}></div> 
-            <div className={styles.item_chargeTime}>22 min 39 sek</div>
+            <div className={styles.item_chargeTime}>{data.chargeTime}</div>
           </div>
         <div className={styles.item_edit}>
           <CiEdit />
