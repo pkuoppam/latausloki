@@ -1,8 +1,12 @@
-import styles from './ItemForm.module.scss'
+import { useNavigate } from 'react-router-dom'
 import useForm from '../../shared/useform/useform'
+import styles from './ItemForm.module.scss'
 import Button from '../../shared/buttons'
 
 function ItemForm(props) {
+  // Navigoinnin alustus
+  const navigate = useNavigate()
+
   // Esitellään submit funktio,joka painamalla 
   // nappia LISÄÄ tulostaa ruudulle 
   // väliaikaisesti varoitusteksin SUBMIT
@@ -30,7 +34,7 @@ function ItemForm(props) {
   
   // Funktio tulostaa nappia PERUUTA painamalla näytölle varoitustekstin CANCEL
   const handleCancel = () => {
-    alert('CANCEL') 
+    navigate('/') 
   }
 
   return (
