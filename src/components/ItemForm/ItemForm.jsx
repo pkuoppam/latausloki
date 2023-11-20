@@ -15,7 +15,7 @@ function ItemForm(props) {
     let storedValues = Object.assign({}, values)
     storedValues.totalPrice = parseFloat(storedValues.totalPrice)
     storedValues.chargeTime = `${storedValues.chargeTimeMinutes || 0}:${storedValues.chargeTimeSeconds || 0}`;
-    storedValues.id = crypto.randomUUID()
+    storedValues.id = storedValues.id ? storedValues.id : crypto.randomUUID()
     props.onItemSubmit(storedValues)
     navigate(-1)
   }
@@ -29,8 +29,10 @@ function ItemForm(props) {
   const minutes = today.getMinutes().toString().padStart(2, '0');
   const todayTime = `${hours}:${minutes}`;
 
-  // Määritellään vakiolla alkuarvot lomakekenttiin 
-  const initialState = {
+  // Tarkistetaan onko formData määritteellä välitetty tiedot. 
+  // Jos on, niin välitetty merkintä asetetaan initialState vakion arvoksi 
+  // muussa tapauksessa määritellään tyhdän merkinnän alkuarvot.
+  const initialState = props.formData ? props.formData : {
     operator: "",
     totalPrice: "",
     paymentDate: todayDate,
@@ -108,7 +110,7 @@ function ItemForm(props) {
               <Button onClick={handleCancel}>PERUUTA</Button>
             </div>
             <div>
-              <Button primary type='submit'>LISÄÄ</Button>
+              <Button primary type='submit'>{ props.formData ? "TALLENNA" : "LISÄÄ" }</Button>
             </div>
             </div>
           </div>
