@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import styles from './Item.module.scss'
 import { CiEdit } from 'react-icons/ci'
 
@@ -45,7 +46,7 @@ function Item({data, ...props}) {
             <div className={styles.item_chargeTime}>{chargeTimeFormat}</div>
           </div>
         <div className={styles.item_edit}>
-          <CiEdit />
+        <Link to={"/edit/" + data.id}><CiEdit /></Link>
         </div>  
         </div>  // styles.item_filling on täytteenä, kun en saanut muuten aikaa asemoitumaan oikeaan reunaan
       )
