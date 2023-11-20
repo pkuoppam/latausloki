@@ -15,6 +15,7 @@ function ItemForm(props) {
     let storedValues = Object.assign({}, values)
     storedValues.totalPrice = parseFloat(storedValues.totalPrice)
     storedValues.chargeTime = `${storedValues.chargeTimeMinutes || 0}:${storedValues.chargeTimeSeconds || 0}`;
+    storedValues.id = crypto.randomUUID()
     props.onItemSubmit(storedValues)
     navigate(-1)
   }
