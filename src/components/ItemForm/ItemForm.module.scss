@@ -25,8 +25,25 @@
     outline: none;
   }
   
-  .itemform label {
+  .itemform label, .chargeTimeTitle {
     font-size: 1.2rem;
     margin-bottom: 0.5rem;
   }
   
+  // Alla lautausaika labelien käsittely, kun ei toimi row:lla halutusti 
+  .itemform_column {
+    margin: 0.5rem 0.3rem;
+    width: 100%;
+  }
+  
+  .itemform_input {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    margin: 0.5rem 0.3rem;
+    width: 100%;
+  }
+  
+  .itemform_input label {
+    margin-bottom: 0;
+  }

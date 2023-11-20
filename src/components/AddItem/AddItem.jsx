@@ -5,8 +5,9 @@ function AddItem(props) {
 
   return (
     <div className={styles.additem}>
-      <h2>Uuden merkinnän lisääminen</h2>
-      <ItemForm />
+      <div className={styles.centerText}>
+      <h2>Uuden lataus tapahtuman lisääminen</h2></div>
+      <ItemForm onItemSubmit={props.onItemSubmit} />
     </div> 
   )
 
