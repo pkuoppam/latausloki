@@ -110,7 +110,14 @@ function ItemForm(props) {
               <Button onClick={handleCancel}>PERUUTA</Button>
             </div>
             <div>
-              <Button primary type='submit'>{ props.formData ? "TALLENNA" : "LISÄÄ" }</Button>
+              <Button primary 
+                      disabled={values.operator &&
+                                values.totalPrice &&
+                                values.charge &&
+                                values.paymentDate && 
+                                values.paymentTime ? "" : "disabled"}
+                      type='submit'>
+                { props.formData ? "TALLENNA" : "LISÄÄ" }</Button>
             </div>
             </div>
           </div>
