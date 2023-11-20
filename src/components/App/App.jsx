@@ -8,10 +8,19 @@ function App() {
   
   // Esitellään alemmille komponenteille välitettävä käsittejä funktio
   // Tehdään kopio slice funktion avulla ja lisätään uusi tieto taulukkoon
-  // Merkintöjen lajittelu suoritetaan sort funktiolla
   const handleItemSubmit = (newitem) => {
     let copy = data.slice()
-    copy.unshift(newitem)
+    
+    // Selvitetään löytyykö tunnistetta vastaava merkintä taulukko olion
+    // findIndex funktion avulla. Tämän avulla joko lisätään uusi tai
+    // tai korvataan muokattu merkintä.
+    const index = copy.findIndex(item => item.id === newitem.id)
+    if (index >= 0) {
+      copy[index] = newitem
+    } else {
+      copy.push(newitem)
+    }
+    // Merkintöjen lajittelu suoritetaan sort funktiolla
     copy.sort( (a,b) => {
       const aDate = new Date(a.paymentDate + "T" + a.paymentTime)
       const bDate = new Date(b.paymentDate + "T" + b.paymentTime)
