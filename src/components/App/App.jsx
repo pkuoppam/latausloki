@@ -5,6 +5,7 @@ import testdata from './testdata.js'
 function App() {
   // Luodaan tilamuuttuja ja alustetaan alkuarvoksi testdatan sisältö
   const [data, setData] = useState(testdata)
+  const [operatorlist, setOperatorlist] = useState(["ABC-Lataus", "K-Lataus", "Ionity", "Tesla"])
 
   // Esitellään uusi funktio merkinnän poistamista varten.
   // Luodaan kopio taulukosta. Suodatetaan ja tallennetaan uudeksi arvoksi
@@ -41,6 +42,7 @@ function App() {
   return (
     <>
       <AppRouter data={data}
+                 operatorlist={operatorlist}
                  onItemSubmit={handleItemSubmit} 
                  onItemDelete={handleItemDelete} /> 
     </>

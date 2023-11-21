@@ -66,10 +66,10 @@ function ItemForm(props) {
             <div>
               <label htmlFor='operator'>Operaattori</label>
               <select id='operator' name='operator' onChange={handleChange} value={values.operator}>
-                <option>ABC-Lataus</option>
-                <option>K-Lataus</option>
-                <option>Ionity</option>
-                <option>Tesla</option>
+                <option value="">(valitse)</option> 
+                { props.operatorlist.map(
+                  operator => <option key={operator}>{operator}</option> // map- funktiolla luodaan operaattori lista
+                )}
               </select>
             </div>
           </div>

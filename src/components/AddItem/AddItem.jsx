@@ -7,7 +7,8 @@ function AddItem(props) {
     <div className={styles.additem}>
       <div className={styles.centerText}>
       <h2>Uuden lataus tapahtuman lisääminen</h2></div>
-      <ItemForm onItemSubmit={props.onItemSubmit} />
+      <ItemForm onItemSubmit={props.onItemSubmit}
+                operatorlist={props.operatorlist} />
     </div> 
   )
 
