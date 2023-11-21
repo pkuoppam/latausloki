@@ -3,7 +3,7 @@ import useLocalStorage from '../../shared/uselocalstorage/uselocalstorage'
 import AppRouter from '../AppRouter'
 import testdata from './testdata.js'
 import firebase from './firebase.js'
-import { collection, getFirestore, onSnapshot  } from 'firebase/firestore'
+import { collection, deleteDoc, doc, getFirestore, onSnapshot, setDoc  } from 'firebase/firestore'
 import { useEffect } from 'react'
 
 function App() {
@@ -27,17 +27,15 @@ function App() {
   }, [])
 
   // Esitellään uusi funktio merkinnän poistamista varten.
-  // Luodaan kopio taulukosta. Suodatetaan ja tallennetaan uudeksi arvoksi
-  const handleItemDelete = (id) => {
-    let copy = data.slice()
-    copy = copy.filter(item => item.id !== id)
-    setData(copy)
+  // Yhteys firespace:iin itemin poistamiseen 
+  const handleItemDelete = async (id) => {
+    await deleteDoc(doc(firestore, 'item', id))
   }
 
   // Esitellään alemmille komponenteille välitettävä käsittejä funktio
-  // Tehdään kopio slice funktion avulla ja lisätään uusi tieto taulukkoon
-  const handleItemSubmit = (newitem) => {
-    let copy = data.slice()
+  // Yhteys firespace:iin itemin lisäykseen ja muokkaamiseen
+  const handleItemSubmit = async (newitem) => {
+    await setDoc(doc(firestore, 'item', newitem.id), newitem)
     
     // Selvitetään löytyykö tunnistetta vastaava merkintä taulukko olion
     // findIndex funktion avulla. Tämän avulla joko lisätään uusi tai
