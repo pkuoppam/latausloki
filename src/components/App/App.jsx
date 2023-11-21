@@ -3,13 +3,13 @@ import useLocalStorage from '../../shared/uselocalstorage/uselocalstorage'
 import AppRouter from '../AppRouter'
 import testdata from './testdata.js'
 import firebase from './firebase.js'
-import { collection, deleteDoc, doc, getFirestore, onSnapshot, orderBy, query, setDoc  } from 'firebase/firestore'
+import { addDoc, collection, deleteDoc, doc, getFirestore, onSnapshot, orderBy, query, setDoc  } from 'firebase/firestore'
 import { useEffect } from 'react'
 
 function App() {
   // Luodaan tilamuuttuja ja alustetaan alkuarvot
   const [data, setData] = useState([])
-  const [operatorlist, setOperatorlist] = useLocalStorage('latausloki-operatorlist',[])
+  const [operatorlist, setOperatorlist] = useState([])
 
   // Haetaan tiedot firestore kytkennästä
   const firestore = getFirestore(firebase)
@@ -18,7 +18,8 @@ function App() {
   // Lisää lajittelun myös firebase tietojen hakuun
   useEffect( () => {
     const unsubscribe = onSnapshot(query(collection(firestore,'item'),
-                                         orderBy('paymentDate', 'desc')),
+                                         orderBy('paymentDate', 'desc'),
+                                         orderBy('paymentTime', 'desc')),
                                    snapshot => {
       const newData = []
       snapshot.forEach( doc => {
@@ -28,6 +29,22 @@ function App() {
     })
     return unsubscribe
   }, [])
+
+  // Pidetään tiedot ajantasalla firebase tietokannan kanssa
+  // Lisää lajittelun myös firebase operaattorin hakuun
+
+  useEffect( () => {
+    const unsubscribe = onSnapshot(query(collection(firestore,'operator'),
+                                         orderBy('operator')),
+                                   snapshot => {
+      const newOperatorlist = []
+      snapshot.forEach( doc => {
+        newOperatorlist.push(doc.data().operator)
+      })
+      setOperatorlist(newOperatorlist)
+    })
+    return unsubscribe
+  }, []) 
 
   // Esitellään uusi funktio merkinnän poistamista varten.
   // Yhteys firespace:iin itemin poistamiseen 
@@ -40,29 +57,28 @@ function App() {
   const handleItemSubmit = async (newitem) => {
     await setDoc(doc(firestore, 'item', newitem.id), newitem)
     
+    // Uuden muuttujan luonti copy -> newCopy (muuten konsoli antaa virheen)
+  const newCopy = [...data];
     // Selvitetään löytyykö tunnistetta vastaava merkintä taulukko olion
     // findIndex funktion avulla. Tämän avulla joko lisätään uusi tai
     // tai korvataan muokattu merkintä.
-    const index = copy.findIndex(item => item.id === newitem.id)
+    const index = newCopy.findIndex(item => item.id === newitem.id)
     if (index >= 0) {
-      copy[index] = newitem
+      newCopy[index] = newitem
     } else {
-      copy.push(newitem)
+      newCopy.push(newitem)
     }
     // Merkintöjen lajittelu suoritetaan sort funktiolla
-    copy.sort( (a,b) => {
+    newCopy.sort( (a,b) => {
       const aDate = new Date(a.paymentDate + "T" + a.paymentTime)
       const bDate = new Date(b.paymentDate + "T" + b.paymentTime)
       return bDate - aDate
     })
-    setData(copy)
+    setData(newCopy)
   }
-
-  const handleOperatorSubmit = (operator) => {
-    let copy = operatorlist.slice()
-    copy.push(operator)
-    copy.sort()
-    setOperatorlist(copy)
+  // Lisää firebase operator-kokoelmaan uuden dokumentin
+  const handleOperatorSubmit = async (operator) => {
+    await addDoc(collection(firestore,'operator'),{operator: operator})
   }
 
   // Välitetään AppRouter-komponentille edellämääritetty käsittelijä funktio
