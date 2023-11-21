@@ -1,10 +1,16 @@
 import styles from './Settings.module.scss'
 
-function Settings() {
+function Settings(props) {
 
   return (
     <div className={styles.settings}>
-      <h2>Settings</h2>
+      <h2>Asetukset</h2>
+      <h3>Operaattorit</h3>
+      <div className={styles.settings_operators}>
+        { props.operatorlist.map(
+            operator => <div key={operator}>{operator}</div>
+        )}
+      </div>
     </div>
   )
 }
