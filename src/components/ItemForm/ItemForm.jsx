@@ -51,7 +51,13 @@ function ItemForm(props) {
   const handleCancel = () => {
     navigate('/') 
   }
-  
+
+  // Lisäyksen poistamisen käsittevä funktio
+  const handleDelete = () => {
+    props.onItemDelete(values.id)
+    navigate(-1)
+  }
+
   return (
     <div>
       <form onSubmit={handleSubmit}>
@@ -121,6 +127,14 @@ function ItemForm(props) {
             </div>
             </div>
           </div>
+          { props.onItemDelete ? 
+            <div className={styles.itemform_row}>
+              <div>
+                <Button secondary onClick={handleDelete}>POISTA</Button>
+              </div>
+              <div></div>
+            </div>
+            : null }
         </div>
       </form>
     </div>

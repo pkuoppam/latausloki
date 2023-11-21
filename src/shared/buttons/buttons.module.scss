@@ -39,9 +39,10 @@
   }
 
   .button_floating {
-    position: fixed;
-    bottom: 3.5rem;
-    transform: translate(420%);
+    position: absolute;
+    bottom: 2%;
+    left: 48%;
+    transform: translate(-50%, -50%);
     border-radius: 30%;
     font-size: 2.5em;
     width: 1.5em;

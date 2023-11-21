@@ -5,7 +5,15 @@ import testdata from './testdata.js'
 function App() {
   // Luodaan tilamuuttuja ja alustetaan alkuarvoksi testdatan sisältö
   const [data, setData] = useState(testdata)
-  
+
+  // Esitellään uusi funktio merkinnän poistamista varten.
+  // Luodaan kopio taulukosta. Suodatetaan ja tallennetaan uudeksi arvoksi
+  const handleItemDelete = (id) => {
+    let copy = data.slice()
+    copy = copy.filter(item => item.id !== id)
+    setData(copy)
+  }
+
   // Esitellään alemmille komponenteille välitettävä käsittejä funktio
   // Tehdään kopio slice funktion avulla ja lisätään uusi tieto taulukkoon
   const handleItemSubmit = (newitem) => {
@@ -32,7 +40,9 @@ function App() {
   // Välitetään AppRouter-komponentille edellämääritetty käsittelijä funktio
   return (
     <>
-      <AppRouter data={data} onItemSubmit={handleItemSubmit} /> 
+      <AppRouter data={data}
+                 onItemSubmit={handleItemSubmit} 
+                 onItemDelete={handleItemDelete} /> 
     </>
   )
 }
