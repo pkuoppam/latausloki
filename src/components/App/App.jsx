@@ -38,13 +38,21 @@ function App() {
     setData(copy)
   }
 
+  const handleOperatorSubmit = (operator) => {
+    let copy = operatorlist.slice()
+    copy.push(operator)
+    copy.sort()
+    setOperatorlist(copy)
+  }
+
   // Välitetään AppRouter-komponentille edellämääritetty käsittelijä funktio
   return (
     <>
       <AppRouter data={data}
                  operatorlist={operatorlist}
                  onItemSubmit={handleItemSubmit} 
-                 onItemDelete={handleItemDelete} /> 
+                 onItemDelete={handleItemDelete}
+                 onOperatorSubmit={handleOperatorSubmit} /> 
     </>
   )
 }
