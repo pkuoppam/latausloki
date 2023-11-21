@@ -2,11 +2,29 @@ import { useState } from 'react'
 import useLocalStorage from '../../shared/uselocalstorage/uselocalstorage'
 import AppRouter from '../AppRouter'
 import testdata from './testdata.js'
+import firebase from './firebase.js'
+import { collection, getFirestore, onSnapshot  } from 'firebase/firestore'
+import { useEffect } from 'react'
 
 function App() {
-  // Luodaan tilamuuttuja ja alustetaan alkuarvoksi testdatan sisältö
-  const [data, setData] = useLocalStorage('latausloki-data',[])
+  // Luodaan tilamuuttuja ja alustetaan alkuarvot
+  const [data, setData] = useState([])
   const [operatorlist, setOperatorlist] = useLocalStorage('latausloki-operatorlist',[])
+
+  // Haetaan tiedot firestore kytkennästä
+  const firestore = getFirestore(firebase)
+  
+  // Pidetään tiedot ajantasalla firebase tietokannan kanssa
+  useEffect( () => {
+    const unsubscribe = onSnapshot(collection(firestore,'item'), snapshot => {
+      const newData = []
+      snapshot.forEach( doc => {
+        newData.push({ ...doc.data(), id: doc.id })
+      })
+      setData(newData)    
+    })
+    return unsubscribe
+  }, [])
 
   // Esitellään uusi funktio merkinnän poistamista varten.
   // Luodaan kopio taulukosta. Suodatetaan ja tallennetaan uudeksi arvoksi
