@@ -1,0 +1,18 @@
+@import '../../assets/styles/_config.scss';
+
+.stats {
+    padding: $container-padding;
+  }
+  
+  .stats h3 {
+    margin-top: 2rem;
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+  }
+  
+  .centerText {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    margin-bottom: 0.8rem;
+  }

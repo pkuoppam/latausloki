@@ -20,7 +20,9 @@ function Stats(props) {
 
   return (
     <div className={styles.stats}>
-      <h2>Tilastot</h2>
+      <div className={styles.centerText}>
+        <h2>Tilastot</h2>
+      </div>
       <h3>Kulut aikajanalla</h3>
       <ResponsiveContainer height={350}>
         <LineChart data={linedata}>
