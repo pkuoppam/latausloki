@@ -4,7 +4,8 @@ function Settings(props) {
 
   return (
     <div className={styles.settings}>
-      <h2>Asetukset</h2>
+      <div className={styles.centerText}>
+      <h2>Asetukset</h2></div>
       <h3>Operaattorit</h3>
       <div className={styles.settings_operators}>
         { props.operatorlist.map(
