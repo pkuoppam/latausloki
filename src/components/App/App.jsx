@@ -98,8 +98,10 @@ function App() {
                      operatorlist={operatorlist}
                      onItemSubmit={handleItemSubmit} 
                      onItemDelete={handleItemDelete}
-                     onOperatorSubmit={handleOperatorSubmit} />
-         : <Startup auth={auth} />
+                     onOperatorSubmit={handleOperatorSubmit} 
+                     auth={auth}
+                     user={user} />
+        : <Startup auth={auth} />
       }  
     </>
   )

@@ -35,7 +35,9 @@ function AppRouter(props) {
         { path: "stats", element: <Stats data={props.data} /> },
         { path: "settings",
           element: <Settings operatorlist={props.operatorlist}
-                             onOperatorSubmit={props.onOperatorSubmit} /> }
+                             onOperatorSubmit={props.onOperatorSubmit}
+                             user={props.user}
+                             auth={props.auth} /> }
       ]
     }
   ])
