@@ -17,36 +17,46 @@ function App() {
   // Haetaan tiedot firestore kytkennästä
   const firestore = getFirestore(firebase)
   
-  // Pidetään tiedot ajantasalla firebase tietokannan kanssa
+  // Pidetään itemin tiedot ajantasalla firebase tietokannan kanssa
   // Lisää lajittelun myös firebase tietojen hakuun
+  // Käyttäjäkohtainen item-lista 
   useEffect( () => {
-    const unsubscribe = onSnapshot(query(collection(firestore,'item'),
-                                         orderBy('paymentDate', 'desc'),
-                                         orderBy('paymentTime', 'desc')),
-                                   snapshot => {
-      const newData = []
-      snapshot.forEach( doc => {
-        newData.push({ ...doc.data(), id: doc.id })
+    if (user) {
+      const unsubscribe = onSnapshot(query(collection(firestore,`user/${user.uid}/item`),
+                                           orderBy('paymentDate', 'desc'),
+                                           orderBy('paymentTime', 'desc')),
+                                     snapshot => {
+        const newData = []
+        snapshot.forEach( doc => {
+          newData.push({ ...doc.data(), id: doc.id })
+        })
+        setData(newData)
       })
-      setData(newData)
-    })
-    return unsubscribe
-  }, [])
+      return unsubscribe
+    } else {
+      setData([])
+    }
+  }, [user])
 
-  // Pidetään tiedot ajantasalla firebase tietokannan kanssa
+  // Pidetään operaattorin tiedot ajantasalla firebase tietokannan kanssa
   // Lisää lajittelun myös firebase operaattorin hakuun
+  // Käyttäjäkohtainen operator-lista
   useEffect( () => {
-    const unsubscribe = onSnapshot(query(collection(firestore,'operator'),
+    if (user) {
+      const unsubscribe = onSnapshot(query(collection(firestore,`user/${user.uid}/operator`),
                                          orderBy('operator')),
-                                   snapshot => {
-      const newOperatorlist = []
-      snapshot.forEach( doc => {
-        newOperatorlist.push(doc.data().operator)
+                                     snapshot => {
+        const newOperatorlist = []
+        snapshot.forEach( doc => {
+          newOperatorlist.push(doc.data().operator)
+        })
+        setOperatorlist(newOperatorlist)
       })
-      setOperatorlist(newOperatorlist)
-    })
-    return unsubscribe
-  }, []) 
+      return unsubscribe
+    } else {
+      setOperatorlist([])
+    }   
+  }, [user]) 
 
   // Käyttäjän kirjautumistilan käsittelijä
   useEffect( () => {
@@ -56,15 +66,17 @@ function App() {
   }, [])
 
   // Esitellään uusi funktio merkinnän poistamista varten.
-  // Yhteys firespace:iin itemin poistamiseen 
+  // Yhteys firespace:iin itemin poistamiseen
+  // Käyttäjäkohtainen poisto 
   const handleItemDelete = async (id) => {
-    await deleteDoc(doc(firestore, 'item', id))
+    await deleteDoc(doc(firestore, `user/${user.uid}/item`, id))
   }
 
   // Esitellään alemmille komponenteille välitettävä käsittejä funktio
   // Yhteys firespace:iin itemin lisäykseen ja muokkaamiseen
+  // Käyttäjäkohtainen tallennus
   const handleItemSubmit = async (newitem) => {
-    await setDoc(doc(firestore, 'item', newitem.id), newitem)
+    await setDoc(doc(firestore, `user/${user.uid}/item`, newitem.id), newitem)
     
     // Uuden muuttujan luonti copy -> newCopy (muuten konsoli antaa virheen)
   const newCopy = [...data];
@@ -86,8 +98,9 @@ function App() {
     setData(newCopy)
   }
   // Lisää firebase operator-kokoelmaan uuden dokumentin
+  // Käyttäjäkohtainen tallennus
   const handleOperatorSubmit = async (operator) => {
-    await addDoc(collection(firestore,'operator'),{operator: operator})
+    await addDoc(collection(firestore,`user/${user.uid}/operator`),{operator: operator})
   }
 
   // Välitetään AppRouter-komponentille edellämääritetty käsittelijä funktio
