@@ -2,14 +2,17 @@ import { useState } from 'react'
 import useLocalStorage from '../../shared/uselocalstorage/uselocalstorage'
 import AppRouter from '../AppRouter'
 import testdata from './testdata.js'
-import firebase from './firebase.js'
+import firebase, { auth } from './firebase.js'
 import { addDoc, collection, deleteDoc, doc, getFirestore, onSnapshot, orderBy, query, setDoc  } from 'firebase/firestore'
+import { onAuthStateChanged } from 'firebase/auth'
 import { useEffect } from 'react'
+import Startup from '../Startup'
 
 function App() {
   // Luodaan tilamuuttuja ja alustetaan alkuarvot
   const [data, setData] = useState([])
   const [operatorlist, setOperatorlist] = useState([])
+  const [user, setUser] = useState()
 
   // Haetaan tiedot firestore kytkennästä
   const firestore = getFirestore(firebase)
@@ -32,7 +35,6 @@ function App() {
 
   // Pidetään tiedot ajantasalla firebase tietokannan kanssa
   // Lisää lajittelun myös firebase operaattorin hakuun
-
   useEffect( () => {
     const unsubscribe = onSnapshot(query(collection(firestore,'operator'),
                                          orderBy('operator')),
@@ -45,6 +47,13 @@ function App() {
     })
     return unsubscribe
   }, []) 
+
+  // Käyttäjän kirjautumistilan käsittelijä
+  useEffect( () => {
+    onAuthStateChanged(auth, user => {
+      setUser(user)
+    })
+  }, [])
 
   // Esitellään uusi funktio merkinnän poistamista varten.
   // Yhteys firespace:iin itemin poistamiseen 
@@ -84,11 +93,14 @@ function App() {
   // Välitetään AppRouter-komponentille edellämääritetty käsittelijä funktio
   return (
     <>
-      <AppRouter data={data}
-                 operatorlist={operatorlist}
-                 onItemSubmit={handleItemSubmit} 
-                 onItemDelete={handleItemDelete}
-                 onOperatorSubmit={handleOperatorSubmit} /> 
+      { user ?
+          <AppRouter data={data}
+                     operatorlist={operatorlist}
+                     onItemSubmit={handleItemSubmit} 
+                     onItemDelete={handleItemDelete}
+                     onOperatorSubmit={handleOperatorSubmit} />
+         : <Startup auth={auth} />
+      }  
     </>
   )
 }
