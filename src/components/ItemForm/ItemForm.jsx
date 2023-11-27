@@ -3,10 +3,30 @@ import useForm from '../../shared/useform/useform'
 import styles from './ItemForm.module.scss'
 import Button from '../../shared/buttons'
 
+/**
+ * Lomakekomponentti, joka mahdollistaa uuden merkinnän lisäämisen ja olemassa olevan
+ * merkinnän muokkaamisen.
+ *
+ * @component
+ * @param {Object} props - Komponentin ominaisuudet.
+ * @param {function} props.onItemSubmit - Käsittelijäfunktio uuden merkinnän lisäämistä tai muokkaamista varten.
+ * @param {function} [props.onItemDelete] - Käsittelijäfunktio merkinnän poistamista varten.
+ * @param {Object} [props.formData] - Muokattavan merkinnän tiedot.
+ * @param {Array} props.operatorlist - Lista operaattoreista.
+ * @returns {JsxElement} - Renderöity komponentti.
+ */
+
 function ItemForm(props) {
   // Navigoinnin alustus
   const navigate = useNavigate()
 
+  /**
+   * Käsittelijäfunktio lomakkeen lähettämistä varten.
+   * Muuntaa tarvittavat arvot, kutsuu onItemSubmit-funktiota ja navigoi takaisin.
+   *
+   * @function
+   * @returns {void}
+   */
   // Esitellään submit funktio,joka LISÄÄ nappia painamalla tulostaa 
   // konsoliin tiedot ja Object.assing kopion avulla muutetaan totalPrice
   // arvo merkkijonosta luvuksi. 
@@ -46,12 +66,24 @@ function ItemForm(props) {
   // Otetaan käyttöön useform funktio
   const {values, handleChange, handleSubmit } = useForm(submit, initialState, false)
   
-  
+  /**
+   * Käsittelijäfunktio peruuta-napin painamista varten.
+   * Navigoi takaisin etusivulle.
+   * @function
+   * @returns {void}
+   */
   // Funktio palauttaa etusivulle PERUUTA nappia painamalla 
   const handleCancel = () => {
     navigate('/') 
   }
-
+  
+  /**
+   * Käsittelijäfunktio poista-napin painamista varten.
+   * Kutsuu onItemDelete-funktiota ja navigoi takaisin.
+   *
+   * @function
+   * @returns {void}
+  */
   // Lisäyksen poistamisen käsittevä funktio
   const handleDelete = () => {
     props.onItemDelete(values.id)

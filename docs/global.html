@@ -94,9 +94,1915 @@
     
 
     
+        <h3 class="subsection-title">Members</h3>
+
+        
+            
+<h4 class="name" id="Button"><span class="type-signature">(constant) </span>Button<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    Primary UI component for user interaction
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="stories_Button.jsx.html">stories/Button.jsx</a>, <a href="stories_Button.jsx.html#line8">line 8</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+    
 
     
         <h3 class="subsection-title">Methods</h3>
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="App"><span class="type-signature"></span>App<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Sovelluksen pääkomponentti, joka hallinnoi tilaa ja kommunikoi Firebase-palvelun kanssa.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="components_App_App.jsx.html">components/App/App.jsx</a>, <a href="components_App_App.jsx.html#line16">line 16</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="AppRouter"><span class="type-signature"></span>AppRouter<span class="signature">(props)</span><span class="type-signature"> &rarr; {JsxElement}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    `AppRouter` vastaa sovelluksen reitityksen määrittämisestä käyttäen React Routeria.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>props</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Komponentille annetut ominaisuudet.
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>onItemSubmit</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Funktio, joka käsittelee merkinnän lähettämisen.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>onItemDelete</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Funktio, joka käsittelee merkinnän poistamisen.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>onOperatorSubmit</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Funktio, joka käsittelee operaattorin lähettämisen.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>user</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Käyttäjän tiedot.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>auth</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Autentikointiobjekti.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>operatorlist</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Lista käytettävissä olevista operaattoreista.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>data</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Tieto sovelluksen tarvitsemasta datasta.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="components_AppRouter_AppRouter.jsx.html">components/AppRouter/AppRouter.jsx</a>, <a href="components_AppRouter_AppRouter.jsx.html#line37">line 37</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    - Renderöity komponentti.
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">JsxElement</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>// Käyttö AppRouter-komponentin kanssa:&lt;AppRouter  onItemSubmit={handleItemSubmit}  onItemDelete={handleItemDelete}  onOperatorSubmit={handleOperatorSubmit}  user={currentUser}  auth={authObject}  operatorlist={operatorList}  data={applicationData}/></code></pre>
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="EditItem"><span class="type-signature"></span>EditItem<span class="signature">(props)</span><span class="type-signature"> &rarr; {JsxElement}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    `EditItem`-komponentti vastaa merkinnän muokkausnäkymästä, jossa käyttäjä voimuokata ja päivittää tietojaan. Käyttää `ItemForm`-komponenttia lomakkeenrenderöintiin ja tiedon päivittämiseen.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>props</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Komponentille annetut ominaisuudet.
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>onItemSubmit</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Funktio, joka käsittelee merkinnän lähettämisen.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>onItemDelete</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Funktio, joka käsittelee merkinnän poistamisen.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>operatorlist</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Lista käytettävissä olevista operaattoreista.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="components_EditItem_EditItem.jsx.html">components/EditItem/EditItem.jsx</a>, <a href="components_EditItem_EditItem.jsx.html#line25">line 25</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    - Renderöity komponentti.
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">JsxElement</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>// Käyttö EditItem-komponentin kanssa:EditItem  onItemSubmit={handleItemSubmit}  onItemDelete={handleItemDelete}  operatorlist={operatorList}</code></pre>
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="ItemForm"><span class="type-signature"></span>ItemForm<span class="signature">(props)</span><span class="type-signature"> &rarr; {JsxElement}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Lomakekomponentti, joka mahdollistaa uuden merkinnän lisäämisen ja olemassa olevanmerkinnän muokkaamisen.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>props</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Komponentin ominaisuudet.
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+        <th>Attributes</th>
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>onItemSubmit</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Käsittelijäfunktio uuden merkinnän lisäämistä tai muokkaamista varten.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>onItemDelete</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Käsittelijäfunktio merkinnän poistamista varten.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>formData</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Muokattavan merkinnän tiedot.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>operatorlist</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last">Lista operaattoreista.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="components_ItemForm_ItemForm.jsx.html">components/ItemForm/ItemForm.jsx</a>, <a href="components_ItemForm_ItemForm.jsx.html#line19">line 19</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    - Renderöity komponentti.
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">JsxElement</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="Items"><span class="type-signature"></span>Items<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Items-komponentti näyttää listan erilaisista kohteista.
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>data</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array.&lt;Object></span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Tiedot kohteista.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="components_Items_Items.jsx.html">components/Items/Items.jsx</a>, <a href="components_Items_Items.jsx.html#line18">line 18</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>// Näyttää listan kohteista ja FloatingButtonin, joka johtaa// käyttäjän lisäämään uuden kohteen.&lt;Items /></code></pre>
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="Settings"><span class="type-signature"></span>Settings<span class="signature">(props)</span><span class="type-signature"> &rarr; {JsxElement}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Settings-komponentti vastaa sovelluksen asetusnäkymästä, jossa käyttäjä voihallita profiiliaan ja operaattorilistaa.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>props</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Komponentille annetut ominaisuudet.
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>user</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Käyttäjän tiedot.
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>photoURL</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Käyttäjän profiilikuvan URL.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>displayName</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Käyttäjän näyttönimi.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>email</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Käyttäjän sähköpostiosoite.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>operatorlist</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Lista käytettävissä olevista operaattoreista.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>auth</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Firebase-authentikointiobjekti.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>onOperatorSubmit</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Funktio uuden operaattorin lisäämiseksi.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="components_Settings_Settings.jsx.html">components/Settings/Settings.jsx</a>, <a href="components_Settings_Settings.jsx.html#line26">line 26</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    - Renderöity komponentti.
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">JsxElement</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>// Käyttö Settings-komponentin kanssa:Settings user={user} operatorlist={operatorList} auth={auth} onOperatorSubmit={handleOperatorSubmit}</code></pre>
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="Stats"><span class="type-signature"></span>Stats<span class="signature">(props)</span><span class="type-signature"> &rarr; {JsxElement}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Stats-komponentti vastaa tilastojen esittämisestä liittyen kulutukseen ajanjaksollaja operaattoreittain. Käyttää Recharts-kirjastoa visuaalisen esityksen luomiseen.
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>props</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Komponentille annetut ominaisuudet.
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>data</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Array</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Tietoja kulutuksesta, jota käytetään tilastojen luomiseen.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>data[</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Yksittäinen tietue kulutuksesta.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>data[].paymentDate</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Maksun päivämäärä (ISO 8601 -muodossa).</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>data[].totalPrice</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Kokonaishinta.</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>data[].operator</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">Operaattorin nimi.</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="components_Stats_Stats.jsx.html">components/Stats/Stats.jsx</a>, <a href="components_Stats_Stats.jsx.html#line25">line 25</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    - Renderöity komponentti.
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">JsxElement</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>// Käyttö Stats-komponentin kanssa:Stats data={[{paymentDate: "2023-03-20", totalPrice: 12.68, operator: "ABC-Lataus"}, ]}</code></pre>
+
+
 
         
             
@@ -205,7 +2111,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="uselocalstorage_uselocalstorage.js.html">uselocalstorage/uselocalstorage.js</a>, <a href="uselocalstorage_uselocalstorage.js.html#line8">line 8</a>
+        <a href="shared_uselocalstorage_uselocalstorage.js.html">shared/uselocalstorage/uselocalstorage.js</a>, <a href="shared_uselocalstorage_uselocalstorage.js.html#line8">line 8</a>
     </li></ul></dd>
     
 
@@ -364,7 +2270,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="uselocalstorage_uselocalstorage.js.html">uselocalstorage/uselocalstorage.js</a>, <a href="uselocalstorage_uselocalstorage.js.html#line17">line 17</a>
+        <a href="shared_uselocalstorage_uselocalstorage.js.html">shared/uselocalstorage/uselocalstorage.js</a>, <a href="shared_uselocalstorage_uselocalstorage.js.html#line17">line 17</a>
     </li></ul></dd>
     
 
@@ -617,7 +2523,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="useform_useform.js.html">useform/useform.js</a>, <a href="useform_useform.js.html#line52">line 52</a>
+        <a href="shared_useform_useform.js.html">shared/useform/useform.js</a>, <a href="shared_useform_useform.js.html#line52">line 52</a>
     </li></ul></dd>
     
 
@@ -804,7 +2710,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="uselocalstorage_uselocalstorage.js.html">uselocalstorage/uselocalstorage.js</a>, <a href="uselocalstorage_uselocalstorage.js.html#line30">line 30</a>
+        <a href="shared_uselocalstorage_uselocalstorage.js.html">shared/uselocalstorage/uselocalstorage.js</a>, <a href="shared_uselocalstorage_uselocalstorage.js.html#line30">line 30</a>
     </li></ul></dd>
     
 
@@ -1042,7 +2948,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="useform_useform.js.html">useform/useform.js</a>, <a href="useform_useform.js.html#line3">line 3</a>
+        <a href="shared_useform_useform.js.html">shared/useform/useform.js</a>, <a href="shared_useform_useform.js.html#line3">line 3</a>
     </li></ul></dd>
     
 
@@ -1072,13 +2978,13 @@
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#decode">decode</a></li><li><a href="global.html#encode">encode</a></li><li><a href="global.html#useForm">useForm</a></li><li><a href="global.html#useLocalStorage">useLocalStorage</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#App">App</a></li><li><a href="global.html#AppRouter">AppRouter</a></li><li><a href="global.html#Button">Button</a></li><li><a href="global.html#EditItem">EditItem</a></li><li><a href="global.html#ItemForm">ItemForm</a></li><li><a href="global.html#Items">Items</a></li><li><a href="global.html#Settings">Settings</a></li><li><a href="global.html#Stats">Stats</a></li><li><a href="global.html#decode">decode</a></li><li><a href="global.html#encode">encode</a></li><li><a href="global.html#useForm">useForm</a></li><li><a href="global.html#useLocalStorage">useLocalStorage</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Mon Nov 27 2023 13:42:32 GMT+0200 (Itä-Euroopan normaaliaika)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Mon Nov 27 2023 18:42:47 GMT+0200 (Itä-Euroopan normaaliaika)
 </footer>
 
 <script> prettyPrint(); </script>

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Home</title>
+    <title>JSDoc: Source: components/Items/Items.jsx</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,32 +17,51 @@
 
 <div id="main">
 
-    <h1 class="page-title">Home</h1>
+    <h1 class="page-title">Source: components/Items/Items.jsx</h1>
 
     
 
 
 
     
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import { Link, useLoaderData } from 'react-router-dom'
+import styles from './Items.module.scss'
+import { FloatingButton } from '../../shared/buttons'
+import Item from '../Item/Item'
 
+/**
+ * Items-komponentti näyttää listan erilaisista kohteista.
+ *
+ * @component
+ * @example
+ * // Näyttää listan kohteista ja FloatingButtonin, joka johtaa
+ * // käyttäjän lisäämään uuden kohteen.
+ * &lt;Items />
+ *
+ * @prop {Object[]} data - Tiedot kohteista.
+ */
 
-    <h3> </h3>
+function Items() {
+  // Noudetaan react routerin loader toiminnallisuuden kautta 
+  // välitetty tieto  ja tallennetaan data vakioiksi
+  const data = useLoaderData()
+  // map-funktiolla tiedot muutetaan item-komponenteiksi
+  const items = data.map(item => &lt;Item key={item.id} data={item} />)
 
+  return (
+    &lt;div className={styles.items}>
+      { items }         
+      &lt;Link to="/add">&lt;FloatingButton secondary>+&lt;/FloatingButton>&lt;/Link>
+    &lt;/div>
+  )
+}
 
-
-
-
-
-
-
-
-
-    
-
-
-
-
-
+export default Items
+</code></pre>
+        </article>
+    </section>
 
 
 

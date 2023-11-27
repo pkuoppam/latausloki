@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: components/ItemForm/ItemForm.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: components/ItemForm/ItemForm.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import { useNavigate } from 'react-router-dom'
+import useForm from '../../shared/useform/useform'
+import styles from './ItemForm.module.scss'
+import Button from '../../shared/buttons'
+
+/**
+ * Lomakekomponentti, joka mahdollistaa uuden merkinnän lisäämisen ja olemassa olevan
+ * merkinnän muokkaamisen.
+ *
+ * @component
+ * @param {Object} props - Komponentin ominaisuudet.
+ * @param {function} props.onItemSubmit - Käsittelijäfunktio uuden merkinnän lisäämistä tai muokkaamista varten.
+ * @param {function} [props.onItemDelete] - Käsittelijäfunktio merkinnän poistamista varten.
+ * @param {Object} [props.formData] - Muokattavan merkinnän tiedot.
+ * @param {Array} props.operatorlist - Lista operaattoreista.
+ * @returns {JsxElement} - Renderöity komponentti.
+ */
+
+function ItemForm(props) {
+  // Navigoinnin alustus
+  const navigate = useNavigate()
+
+  /**
+   * Käsittelijäfunktio lomakkeen lähettämistä varten.
+   * Muuntaa tarvittavat arvot, kutsuu onItemSubmit-funktiota ja navigoi takaisin.
+   *
+   * @function
+   * @returns {void}
+   */
+  // Esitellään submit funktio,joka LISÄÄ nappia painamalla tulostaa 
+  // konsoliin tiedot ja Object.assing kopion avulla muutetaan totalPrice
+  // arvo merkkijonosta luvuksi. 
+  // Yhditetään minuutit ja sekunnit jotta voimme käyttää niitä toivotusti
+  const submit = () => {
+    let storedValues = Object.assign({}, values)
+    storedValues.totalPrice = parseFloat(storedValues.totalPrice)
+    storedValues.chargeTime = `${storedValues.chargeTimeMinutes || 0}:${storedValues.chargeTimeSeconds || 0}`;
+    storedValues.id = storedValues.id ? storedValues.id : crypto.randomUUID()
+    props.onItemSubmit(storedValues)
+    navigate(-1)
+  }
+
+  // Haetaan maksupäivä(paymentDate) label:n, valmiiksi kuluva päivä
+  const today = new Date();
+  const todayDate = today.toISOString().split('T')[0];
+ 
+  // Haetaan maksuaika(paymentTime) label:n, valmiiksi kuluva aika
+  const hours = today.getHours().toString().padStart(2, '0');
+  const minutes = today.getMinutes().toString().padStart(2, '0');
+  const todayTime = `${hours}:${minutes}`;
+
+  // Tarkistetaan onko formData määritteellä välitetty tiedot. 
+  // Jos on, niin välitetty merkintä asetetaan initialState vakion arvoksi 
+  // muussa tapauksessa määritellään tyhdän merkinnän alkuarvot.
+  const initialState = props.formData ? props.formData : {
+    operator: "",
+    totalPrice: "",
+    paymentDate: todayDate,
+    paymentTime: todayTime,
+    charge: "",
+    location: "",
+    chargeTimeMinutes: "",
+    chargeTimeSeconds: ""
+  };
+  
+  // Otetaan käyttöön useform funktio
+  const {values, handleChange, handleSubmit } = useForm(submit, initialState, false)
+  
+  /**
+   * Käsittelijäfunktio peruuta-napin painamista varten.
+   * Navigoi takaisin etusivulle.
+   * @function
+   * @returns {void}
+   */
+  // Funktio palauttaa etusivulle PERUUTA nappia painamalla 
+  const handleCancel = () => {
+    navigate('/') 
+  }
+  
+  /**
+   * Käsittelijäfunktio poista-napin painamista varten.
+   * Kutsuu onItemDelete-funktiota ja navigoi takaisin.
+   *
+   * @function
+   * @returns {void}
+  */
+  // Lisäyksen poistamisen käsittevä funktio
+  const handleDelete = () => {
+    props.onItemDelete(values.id)
+    navigate(-1)
+  }
+
+  return (
+    &lt;div>
+      &lt;form onSubmit={handleSubmit}>
+        &lt;div className={styles.itemform}>
+          &lt;div className={styles.itemform_row}>
+            &lt;div>
+              &lt;label htmlFor='operator'>Operaattori&lt;/label>
+              &lt;select id='operator' name='operator' onChange={handleChange} value={values.operator}>
+                &lt;option value="">(valitse)&lt;/option> 
+                { props.operatorlist.map(
+                  operator => &lt;option key={operator}>{operator}&lt;/option> // map- funktiolla luodaan operaattori lista
+                )}
+              &lt;/select>
+            &lt;/div>
+          &lt;/div>
+          &lt;div className={styles.itemform_row}>
+            &lt;div>
+              &lt;label htmlFor='totalPrice'>Summa&lt;/label>
+              &lt;input id='totalPrice' type='number' name='totalPrice' step='0.01' onChange={handleChange} value={values.totalPrice} />
+            &lt;/div>
+            &lt;div>
+              &lt;label htmlFor='charge'>Latausmäärä kWh&lt;/label>
+              &lt;input id='charge' type='number' name='charge' step='0.001' onChange={handleChange} value={values.charge} />
+            &lt;/div>
+          &lt;/div>
+          &lt;div className={styles.itemform_row}>
+	          &lt;div>
+              &lt;label htmlFor='paymentDate'>Maksupäivä&lt;/label>
+              &lt;input id='paymentDate' type='date' name='paymentDate' onChange={handleChange} value={values.paymentDate} max={todayDate} />
+            &lt;/div>
+	          &lt;div>
+              &lt;label htmlFor='paymentTime'>Maksuaika&lt;/label>
+	            &lt;input id='paymentTime' type='time' name='paymentTime' onChange={handleChange} value={values.paymentTime} />
+	          &lt;/div>
+	          &lt;/div>
+          &lt;div className={styles.itemform_row}>
+            &lt;div>
+              &lt;label htmlFor='location'>Sijainti&lt;/label>
+              &lt;input id='location' type='text' name='location' placeholder='Ilmoita halutessasi laturin sijainti' onChange={handleChange} value={values.location} />
+            &lt;/div>
+            &lt;/div>
+          &lt;div className={styles.itemform_column}>
+            &lt;span className={styles.chargeTimeTitle}>Latausaika&lt;/span> 
+          &lt;div className={styles.itemform_row}>
+            &lt;div className={styles.itemform_input}>
+              &lt;label htmlFor='chargeTimeMinutes'>&lt;/label>
+              &lt;input id='chargeTimeMinutes' type='number' name='chargeTimeMinutes' placeholder='Minuutit' onChange={handleChange} value={values.chargeTimeMinutes}  />
+            &lt;/div>
+            &lt;div className={styles.itemform_input}>
+              &lt;label htmlFor='chargeTimeSeconds'>&lt;/label>
+              &lt;input id='chargeTimeSeconds' type='number' name='chargeTimeSeconds' placeholder='Sekunnit' onChange={handleChange}value={values.chargeTimeSeconds} />
+            &lt;/div>
+            &lt;/div>
+          &lt;div className={styles.itemform_row}>
+            &lt;div>
+              &lt;Button onClick={handleCancel}>PERUUTA&lt;/Button>
+            &lt;/div>
+            &lt;div>
+              &lt;Button primary 
+                      disabled={values.operator &amp;&amp;
+                                values.totalPrice &amp;&amp;
+                                values.charge &amp;&amp;
+                                values.paymentDate &amp;&amp; 
+                                values.paymentTime ? "" : "disabled"}
+                      type='submit'>
+                { props.formData ? "TALLENNA" : "LISÄÄ" }&lt;/Button>
+            &lt;/div>
+            &lt;/div>
+          &lt;/div>
+          { props.onItemDelete ? 
+            &lt;div className={styles.itemform_row}>
+              &lt;div>
+                &lt;Button secondary onClick={handleDelete}>POISTA&lt;/Button>
+              &lt;/div>
+              &lt;div>&lt;/div>
+            &lt;/div>
+            : null }
+        &lt;/div>
+      &lt;/form>
+    &lt;/div>
+  )
+
+}
+
+export default ItemForm
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#App">App</a></li><li><a href="global.html#AppRouter">AppRouter</a></li><li><a href="global.html#Button">Button</a></li><li><a href="global.html#EditItem">EditItem</a></li><li><a href="global.html#ItemForm">ItemForm</a></li><li><a href="global.html#Items">Items</a></li><li><a href="global.html#Settings">Settings</a></li><li><a href="global.html#Stats">Stats</a></li><li><a href="global.html#decode">decode</a></li><li><a href="global.html#encode">encode</a></li><li><a href="global.html#useForm">useForm</a></li><li><a href="global.html#useLocalStorage">useLocalStorage</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Mon Nov 27 2023 18:42:47 GMT+0200 (Itä-Euroopan normaaliaika)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

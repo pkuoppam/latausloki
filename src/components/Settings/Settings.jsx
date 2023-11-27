@@ -3,6 +3,26 @@ import styles from './Settings.module.scss';
 import Button from '../../shared/buttons';
 import { signOut } from 'firebase/auth'
 
+/**
+ * Settings-komponentti vastaa sovelluksen asetusnäkymästä, jossa käyttäjä voi
+ * hallita profiiliaan ja operaattorilistaa.
+ *
+ * @component
+ * @param {Object} props - Komponentille annetut ominaisuudet.
+ * @param {Object} props.user - Käyttäjän tiedot.
+ * @param {string} props.user.photoURL - Käyttäjän profiilikuvan URL.
+ * @param {string} props.user.displayName - Käyttäjän näyttönimi.
+ * @param {string} props.user.email - Käyttäjän sähköpostiosoite.
+ * @param {Array} props.operatorlist - Lista käytettävissä olevista operaattoreista.
+ * @param {Object} props.auth - Firebase-authentikointiobjekti.
+ * @param {Function} props.onOperatorSubmit - Funktio uuden operaattorin lisäämiseksi.
+ * @returns {JsxElement} - Renderöity komponentti.
+ *
+ * @example
+ * // Käyttö Settings-komponentin kanssa:
+ * Settings user={user} operatorlist={operatorList} auth={auth} onOperatorSubmit={handleOperatorSubmit}
+ */
+
 function Settings(props) {
   const [notification, setNotification] = useState();
 
