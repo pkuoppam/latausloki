@@ -30,15 +30,17 @@
   
   .button_primary {
     background-color: $color-primary;
-    color: $color-neutral-lightest;
+    color: $color-neutral-darkest;
   }
   
   .button_secondary {
     background-color: $color-secondary;
-    color: $color-neutral-lightest;
+    color: $color-neutral;
   }
 
   .button_floating {
+    background-color: $color-neutral-light;
+    color: $color-neutral-lighter;
     position: absolute;
     bottom: 2%;
     left: 48%;
@@ -51,6 +53,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    
   }
   
   .button_container > div {

@@ -7,7 +7,8 @@ function Button({className, primary, secondary, ...props}) {
     className={clsx(
       styles.button,
       className,  
-      primary && styles.button_primary
+      primary && styles.button_primary,
+      secondary && styles.button_secondary
     )} 
     {...props} />
   )
